@@ -1,0 +1,35 @@
+{
+  "name": "iaf-cdn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base app",
+    "auto-build": "./node_modules/.bin/webpack --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "hogan-express": "^0.5.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel": "^6.3.26",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-plugin-syntax-object-rest-spread": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "scriptjs": "^2.5.8",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "devServer": {
+    "port": 8080
+  }
+}
