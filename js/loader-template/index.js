@@ -19,14 +19,20 @@ import scriptjs from "scriptjs";
 
 	};
 
+	function required( value, description ) {
+
+		if( value !== false && !value ) { throw new Error( "Missing value: " + description ); }
+		return value;
+
+	}
 	// load the iaf client script
-	scriptjs( config.url, function() {
+	scriptjs( required( config.iaf.url, "iaf.url - the URL of the iaf client script" ), function() {
 
 		// create a shortcut to the version of iaf you are using
-		ns.iaf = iaf[ config.iaf.version ];
+		ns.iaf = iaf[ required( config.iaf.version, "iaf.version - the version of the iaf client to use" ) ];
 
 		// load the partials this page needs
-		scriptjs( config.partials.url, function() {
+		scriptjs( required( config.partials.url, "partials.url - the URL to load partials from" ), function() {
 
 			// open the drain so that partials are rendered
 			partialQueue.drain = function( { partialName, containerSelector } ) {
