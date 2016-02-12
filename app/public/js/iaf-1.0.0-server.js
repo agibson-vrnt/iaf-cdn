@@ -99,6 +99,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Redux = _interopRequireWildcard(_redux);
 
+	var _reduxThunk = __webpack_require__(184);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -107,7 +111,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		React: _react2.default,
 		ReactRedux: ReactRedux,
-		Redux: Redux
+		Redux: Redux,
+		ReduxThunk: { thunkMiddleware: _reduxThunk2.default }
 
 	};
 
@@ -21169,6 +21174,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = __webpack_require__(149);
 
+
+/***/ },
+/* 182 */,
+/* 183 */,
+/* 184 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function thunkMiddleware(_ref) {
+	  var dispatch = _ref.dispatch;
+	  var getState = _ref.getState;
+
+	  return function (next) {
+	    return function (action) {
+	      return typeof action === 'function' ? action(dispatch, getState) : next(action);
+	    };
+	  };
+	}
+
+	module.exports = thunkMiddleware;
 
 /***/ }
 /******/ ])

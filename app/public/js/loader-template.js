@@ -81,9 +81,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		var ns = iaf[namespace] = iaf[namespace] || {};
 
 		// supply a bootstrapping method which allows us to enqueue partials to be rendered ASAP
-		ns.bootstrapPartial = function (partialName, containerSelector) {
+		ns.bootstrapPartial = function (partialName, partialModel, containerSelector) {
 
-			partialQueue.enqueue({ partialName: partialName, containerSelector: containerSelector });
+			partialQueue.enqueue({ partialName: partialName, partialModel: partialModel, containerSelector: containerSelector });
 		};
 
 		function required(value, description) {
@@ -105,13 +105,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				// open the drain so that partials are rendered
 				partialQueue.drain = function (_ref) {
 					var partialName = _ref.partialName;
+					var partialModel = _ref.partialModel;
 					var containerSelector = _ref.containerSelector;
 
 
 					var lib = ns.iaf;
 					var partial = ns.partials[partialName];
 					var container = document.querySelector(containerSelector);
-					lib.ReactDOM.render(lib.React.createElement(partial), container);
+					lib.ReactDOM.render(lib.React.createElement(partial, partialModel), container);
 				};
 			});
 		});
